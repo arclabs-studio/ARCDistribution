@@ -1,5 +1,5 @@
 {
-  "originHash" : "6c332cec3ce483a69e6c9fde5c90051092cf0ba600dc9c2225ba4c645c3a0bc3",
+  "originHash" : "b32e0057a16ad332a3007e77aa2655ad53fc9520733cb9e73bf07a83fa8e08f5",
   "pins" : [
     {
       "identity" : "arclogger",
@@ -17,15 +17,6 @@
       "state" : {
         "branch" : "develop",
         "revision" : "3ad7df9acfc112a012550a8b9d80ec76c6c15163"
-      }
-    },
-    {
-      "identity" : "arcstorage",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/arclabs-studio/ARCStorage.git",
-      "state" : {
-        "revision" : "738f5062b154838c19a002f21f25f299820768e5",
-        "version" : "1.3.0"
       }
     },
     {

@@ -22,8 +22,7 @@ let package = Package(name: "ARCDistribution",
 
                       dependencies: [.package(url: "https://github.com/arclabs-studio/ARCNetworking.git",
                                               branch: "develop"),
-                                     .package(url: "https://github.com/arclabs-studio/ARCLogger.git", from: "1.0.0"),
-                                     .package(url: "https://github.com/arclabs-studio/ARCStorage.git", from: "1.0.0")],
+                                     .package(url: "https://github.com/arclabs-studio/ARCLogger.git", from: "1.0.0")],
 
                       // MARK: - Targets
 
@@ -47,8 +46,7 @@ let package = Package(name: "ARCDistribution",
 
                           .target(name: "ARCMetadataManager",
                                   dependencies: ["ARCASCModels",
-                                                 .product(name: "ARCLogger", package: "ARCLogger"),
-                                                 .product(name: "ARCStorage", package: "ARCStorage")],
+                                                 .product(name: "ARCLogger", package: "ARCLogger")],
                                   path: "Sources/ARCMetadataManager",
                                   swiftSettings: [.enableUpcomingFeature("StrictConcurrency")]),
 
