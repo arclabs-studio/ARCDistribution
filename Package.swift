@@ -2,122 +2,84 @@
 
 import PackageDescription
 
-let package = Package(
-    name: "ARCDistribution",
+let package = Package(name: "ARCDistribution",
 
-    // MARK: - Platforms
+                      // MARK: - Platforms
 
-    platforms: [
-        .iOS(.v17),
-        .macOS(.v14)
-    ],
+                      platforms: [.iOS(.v17),
+                                  .macOS(.v14)],
 
-    // MARK: - Products
+                      // MARK: - Products
 
-    products: [
-        .library(
-            name: "ARCDistribution",
-            targets: ["ARCASCClient", "ARCASCModels", "ARCMetadataManager"]
-        ),
-        .library(
-            name: "ARCDistributionMocks",
-            targets: ["ARCDistributionMocks"]
-        ),
-        .executable(
-            name: "arc-distribution",
-            targets: ["ARCDistributionCLI"]
-        )
-    ],
+                      products: [.library(name: "ARCDistribution",
+                                          targets: ["ARCASCClient", "ARCASCModels", "ARCMetadataManager"]),
+                                 .library(name: "ARCDistributionMocks",
+                                          targets: ["ARCDistributionMocks"]),
+                                 .executable(name: "arc-distribution",
+                                             targets: ["ARCDistributionCLI"])],
 
-    // MARK: - Dependencies
+                      // MARK: - Dependencies
 
-    dependencies: [
-        .package(url: "https://github.com/arclabs-studio/ARCNetworking.git", from: "1.0.0"),
-        .package(url: "https://github.com/arclabs-studio/ARCLogger.git", from: "1.0.0"),
-        .package(url: "https://github.com/arclabs-studio/ARCStorage.git", from: "1.0.0")
-    ],
+                      dependencies: [.package(url: "https://github.com/arclabs-studio/ARCNetworking.git",
+                                              branch: "develop"),
+                                     .package(url: "https://github.com/arclabs-studio/ARCLogger.git", from: "1.0.0"),
+                                     .package(url: "https://github.com/arclabs-studio/ARCStorage.git", from: "1.0.0")],
 
-    // MARK: - Targets
+                      // MARK: - Targets
 
-    targets: [
+                      targets: [// MARK: ARCASCModels — Codable models for App Store Connect entities
 
-        // MARK: ARCASCModels — Codable models for App Store Connect entities
+                          .target(name: "ARCASCModels",
+                                  dependencies: [],
+                                  path: "Sources/ARCASCModels",
+                                  swiftSettings: [.enableUpcomingFeature("StrictConcurrency")]),
 
-        .target(
-            name: "ARCASCModels",
-            dependencies: [],
-            path: "Sources/ARCASCModels",
-            swiftSettings: [.enableUpcomingFeature("StrictConcurrency")]
-        ),
+                          // MARK: ARCASCClient — JWT auth + HTTP client for App Store Connect API
 
-        // MARK: ARCASCClient — JWT auth + HTTP client for App Store Connect API
+                          .target(name: "ARCASCClient",
+                                  dependencies: ["ARCASCModels",
+                                                 .product(name: "ARCNetworking", package: "ARCNetworking"),
+                                                 .product(name: "ARCLogger", package: "ARCLogger")],
+                                  path: "Sources/ARCASCClient",
+                                  swiftSettings: [.enableUpcomingFeature("StrictConcurrency")]),
 
-        .target(
-            name: "ARCASCClient",
-            dependencies: [
-                "ARCASCModels",
-                .product(name: "ARCNetworking", package: "ARCNetworking"),
-                .product(name: "ARCLogger", package: "ARCLogger")
-            ],
-            path: "Sources/ARCASCClient",
-            swiftSettings: [.enableUpcomingFeature("StrictConcurrency")]
-        ),
+                          // MARK: ARCMetadataManager — Read/write localized metadata from iCloud folder
 
-        // MARK: ARCMetadataManager — Read/write localized metadata from iCloud folder
+                          .target(name: "ARCMetadataManager",
+                                  dependencies: ["ARCASCModels",
+                                                 .product(name: "ARCLogger", package: "ARCLogger"),
+                                                 .product(name: "ARCStorage", package: "ARCStorage")],
+                                  path: "Sources/ARCMetadataManager",
+                                  swiftSettings: [.enableUpcomingFeature("StrictConcurrency")]),
 
-        .target(
-            name: "ARCMetadataManager",
-            dependencies: [
-                "ARCASCModels",
-                .product(name: "ARCLogger", package: "ARCLogger"),
-                .product(name: "ARCStorage", package: "ARCStorage")
-            ],
-            path: "Sources/ARCMetadataManager",
-            swiftSettings: [.enableUpcomingFeature("StrictConcurrency")]
-        ),
+                          // MARK: ARCDistributionMocks — Test doubles for all protocols
 
-        // MARK: ARCDistributionMocks — Test doubles for all protocols
+                          .target(name: "ARCDistributionMocks",
+                                  dependencies: ["ARCASCClient",
+                                                 "ARCASCModels",
+                                                 "ARCMetadataManager"],
+                                  path: "Sources/ARCDistributionMocks",
+                                  swiftSettings: [.enableUpcomingFeature("StrictConcurrency")]),
 
-        .target(
-            name: "ARCDistributionMocks",
-            dependencies: [
-                "ARCASCClient",
-                "ARCASCModels",
-                "ARCMetadataManager"
-            ],
-            path: "Sources/ARCDistributionMocks",
-            swiftSettings: [.enableUpcomingFeature("StrictConcurrency")]
-        ),
+                          // MARK: ARCDistributionCLI — CLI executable for ci_scripts and terminal
 
-        // MARK: ARCDistributionCLI — CLI executable for ci_scripts and terminal
+                          .executableTarget(name: "ARCDistributionCLI",
+                                            dependencies: ["ARCASCClient",
+                                                           "ARCASCModels",
+                                                           "ARCMetadataManager",
+                                                           .product(name: "ARCLogger", package: "ARCLogger")],
+                                            path: "Sources/ARCDistributionCLI",
+                                            swiftSettings: [.enableUpcomingFeature("StrictConcurrency")]),
 
-        .executableTarget(
-            name: "ARCDistributionCLI",
-            dependencies: [
-                "ARCASCClient",
-                "ARCASCModels",
-                "ARCMetadataManager",
-                .product(name: "ARCLogger", package: "ARCLogger")
-            ],
-            path: "Sources/ARCDistributionCLI",
-            swiftSettings: [.enableUpcomingFeature("StrictConcurrency")]
-        ),
+                          // MARK: Tests
 
-        // MARK: Tests
+                          .testTarget(name: "ARCDistributionTests",
+                                      dependencies: ["ARCASCClient",
+                                                     "ARCASCModels",
+                                                     "ARCMetadataManager",
+                                                     "ARCDistributionMocks"],
+                                      path: "Tests/ARCDistributionTests")],
 
-        .testTarget(
-            name: "ARCDistributionTests",
-            dependencies: [
-                "ARCASCClient",
-                "ARCASCModels",
-                "ARCMetadataManager",
-                "ARCDistributionMocks"
-            ],
-            path: "Tests/ARCDistributionTests"
-        )
-    ],
+                      // MARK: - Swift Language
 
-    // MARK: - Swift Language
-
-    swiftLanguageModes: [.v6]
-)
+                      swiftLanguageModes: [.v6])
