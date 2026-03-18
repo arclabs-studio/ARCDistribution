@@ -1,0 +1,75 @@
+{
+  "": {
+    "swift-dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/master.swiftdeps"
+  },
+  "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/checkouts/ARCNetworking/Sources/ARCNetworking/Implementations/ARCNetworkService.swift": {
+    "dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/ARCNetworkService.d",
+    "object": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/ARCNetworkService.swift.o",
+    "swiftmodule": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/ARCNetworkService~partial.swiftmodule",
+    "swift-dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/ARCNetworkService.swiftdeps",
+    "diagnostics": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/ARCNetworkService.dia"
+  },
+  "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/checkouts/ARCNetworking/Sources/ARCNetworking/Implementations/HTTPClient.swift": {
+    "dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/HTTPClient.d",
+    "object": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/HTTPClient.swift.o",
+    "swiftmodule": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/HTTPClient~partial.swiftmodule",
+    "swift-dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/HTTPClient.swiftdeps",
+    "diagnostics": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/HTTPClient.dia"
+  },
+  "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/checkouts/ARCNetworking/Sources/ARCNetworking/Implementations/RequestBuilder.swift": {
+    "dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/RequestBuilder.d",
+    "object": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/RequestBuilder.swift.o",
+    "swiftmodule": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/RequestBuilder~partial.swiftmodule",
+    "swift-dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/RequestBuilder.swiftdeps",
+    "diagnostics": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/RequestBuilder.dia"
+  },
+  "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/checkouts/ARCNetworking/Sources/ARCNetworking/Models/HTTPError.swift": {
+    "dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/HTTPError.d",
+    "object": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/HTTPError.swift.o",
+    "swiftmodule": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/HTTPError~partial.swiftmodule",
+    "swift-dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/HTTPError.swiftdeps",
+    "diagnostics": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/HTTPError.dia"
+  },
+  "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/checkouts/ARCNetworking/Sources/ARCNetworking/Models/HTTPMethod.swift": {
+    "dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/HTTPMethod.d",
+    "object": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/HTTPMethod.swift.o",
+    "swiftmodule": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/HTTPMethod~partial.swiftmodule",
+    "swift-dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/HTTPMethod.swiftdeps",
+    "diagnostics": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/HTTPMethod.dia"
+  },
+  "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/checkouts/ARCNetworking/Sources/ARCNetworking/Models/HTTPStatusCode.swift": {
+    "dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/HTTPStatusCode.d",
+    "object": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/HTTPStatusCode.swift.o",
+    "swiftmodule": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/HTTPStatusCode~partial.swiftmodule",
+    "swift-dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/HTTPStatusCode.swiftdeps",
+    "diagnostics": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/HTTPStatusCode.dia"
+  },
+  "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/checkouts/ARCNetworking/Sources/ARCNetworking/Protocols/ARCNetworkServiceProtocol.swift": {
+    "dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/ARCNetworkServiceProtocol.d",
+    "object": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/ARCNetworkServiceProtocol.swift.o",
+    "swiftmodule": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/ARCNetworkServiceProtocol~partial.swiftmodule",
+    "swift-dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/ARCNetworkServiceProtocol.swiftdeps",
+    "diagnostics": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/ARCNetworkServiceProtocol.dia"
+  },
+  "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/checkouts/ARCNetworking/Sources/ARCNetworking/Protocols/Endpoint.swift": {
+    "dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/Endpoint.d",
+    "object": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/Endpoint.swift.o",
+    "swiftmodule": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/Endpoint~partial.swiftmodule",
+    "swift-dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/Endpoint.swiftdeps",
+    "diagnostics": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/Endpoint.dia"
+  },
+  "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/checkouts/ARCNetworking/Sources/ARCNetworking/Protocols/HTTPClientProtocol.swift": {
+    "dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/HTTPClientProtocol.d",
+    "object": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/HTTPClientProtocol.swift.o",
+    "swiftmodule": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/HTTPClientProtocol~partial.swiftmodule",
+    "swift-dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/HTTPClientProtocol.swiftdeps",
+    "diagnostics": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/HTTPClientProtocol.dia"
+  },
+  "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/checkouts/ARCNetworking/Sources/ARCNetworking/Protocols/RequestBuilderProtocol.swift": {
+    "dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/RequestBuilderProtocol.d",
+    "object": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/RequestBuilderProtocol.swift.o",
+    "swiftmodule": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/RequestBuilderProtocol~partial.swiftmodule",
+    "swift-dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/RequestBuilderProtocol.swiftdeps",
+    "diagnostics": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCNetworking.build/RequestBuilderProtocol.dia"
+  }
+}

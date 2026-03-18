@@ -1,0 +1,40 @@
+{
+  "": {
+    "swift-dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCASCClient.build/master.swiftdeps"
+  },
+  "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/Sources/ARCASCClient/AppStoreConnectClient.swift": {
+    "dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCASCClient.build/AppStoreConnectClient.d",
+    "object": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCASCClient.build/AppStoreConnectClient.swift.o",
+    "swiftmodule": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCASCClient.build/AppStoreConnectClient~partial.swiftmodule",
+    "swift-dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCASCClient.build/AppStoreConnectClient.swiftdeps",
+    "diagnostics": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCASCClient.build/AppStoreConnectClient.dia"
+  },
+  "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/Sources/ARCASCClient/AppStoreConnectClientProtocol.swift": {
+    "dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCASCClient.build/AppStoreConnectClientProtocol.d",
+    "object": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCASCClient.build/AppStoreConnectClientProtocol.swift.o",
+    "swiftmodule": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCASCClient.build/AppStoreConnectClientProtocol~partial.swiftmodule",
+    "swift-dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCASCClient.build/AppStoreConnectClientProtocol.swiftdeps",
+    "diagnostics": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCASCClient.build/AppStoreConnectClientProtocol.dia"
+  },
+  "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/Sources/ARCASCClient/Auth/ASCCredentials.swift": {
+    "dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCASCClient.build/ASCCredentials.d",
+    "object": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCASCClient.build/ASCCredentials.swift.o",
+    "swiftmodule": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCASCClient.build/ASCCredentials~partial.swiftmodule",
+    "swift-dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCASCClient.build/ASCCredentials.swiftdeps",
+    "diagnostics": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCASCClient.build/ASCCredentials.dia"
+  },
+  "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/Sources/ARCASCClient/Auth/JWTGenerator.swift": {
+    "dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCASCClient.build/JWTGenerator.d",
+    "object": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCASCClient.build/JWTGenerator.swift.o",
+    "swiftmodule": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCASCClient.build/JWTGenerator~partial.swiftmodule",
+    "swift-dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCASCClient.build/JWTGenerator.swiftdeps",
+    "diagnostics": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCASCClient.build/JWTGenerator.dia"
+  },
+  "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/Sources/ARCASCClient/Endpoints/ASCEndpoints.swift": {
+    "dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCASCClient.build/ASCEndpoints.d",
+    "object": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCASCClient.build/ASCEndpoints.swift.o",
+    "swiftmodule": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCASCClient.build/ASCEndpoints~partial.swiftmodule",
+    "swift-dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCASCClient.build/ASCEndpoints.swiftdeps",
+    "diagnostics": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCASCClient.build/ASCEndpoints.dia"
+  }
+}

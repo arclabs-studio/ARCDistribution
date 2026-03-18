@@ -1,0 +1,3 @@
+module ARCASCModels {
+    header "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCASCModels.build/include/ARCASCModels-Swift.h"
+}

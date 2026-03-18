@@ -1,0 +1,3 @@
+module ARCStorage {
+    header "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCStorage.build/include/ARCStorage-Swift.h"
+}

@@ -1,0 +1,3 @@
+module ARCMetadataManager {
+    header "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCMetadataManager.build/include/ARCMetadataManager-Swift.h"
+}

@@ -1,0 +1,12 @@
+{
+  "": {
+    "swift-dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCDistributionPackageTests.build/master.swiftdeps"
+  },
+  "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCDistributionPackageTests.derived/runner.swift": {
+    "dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCDistributionPackageTests.build/runner.d",
+    "object": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCDistributionPackageTests.build/runner.swift.o",
+    "swiftmodule": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCDistributionPackageTests.build/runner~partial.swiftmodule",
+    "swift-dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCDistributionPackageTests.build/runner.swiftdeps",
+    "diagnostics": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCDistributionPackageTests.build/runner.dia"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "": {
+    "swift-dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCASCModels.build/master.swiftdeps"
+  },
+  "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/Sources/ARCASCModels/AppStoreConnectModels.swift": {
+    "dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCASCModels.build/AppStoreConnectModels.d",
+    "object": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCASCModels.build/AppStoreConnectModels.swift.o",
+    "swiftmodule": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCASCModels.build/AppStoreConnectModels~partial.swiftmodule",
+    "swift-dependencies": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCASCModels.build/AppStoreConnectModels.swiftdeps",
+    "diagnostics": "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCASCModels.build/AppStoreConnectModels.dia"
+  }
+}
