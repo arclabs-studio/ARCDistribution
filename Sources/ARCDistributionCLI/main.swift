@@ -152,8 +152,8 @@ enum CLIError: Error, CustomStringConvertible {
 
     var description: String {
         switch self {
-        case .missingArgument(let name): "Missing required argument: \(name)"
-        case .unknownPlatform(let value): "Unknown platform '\(value)'. Valid values: ios, macos, tvos, visionos"
+        case let .missingArgument(name): "Missing required argument: \(name)"
+        case let .unknownPlatform(value): "Unknown platform '\(value)'. Valid values: ios, macos, tvos, visionos"
         }
     }
 }

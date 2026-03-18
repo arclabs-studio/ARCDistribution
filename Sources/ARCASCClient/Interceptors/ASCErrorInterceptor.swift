@@ -10,10 +10,10 @@ import Foundation
 ///   is not a valid ASC error envelope.
 /// - **2xx with empty body:** normalises `Data()` to `Data("{}".utf8)` so that
 ///   `EmptyResponse` decodes successfully on 201/204 endpoints.
+typealias NextHandler = @Sendable (URLRequest) async throws -> (Data, HTTPURLResponse)
+
 struct ASCErrorInterceptor: RequestInterceptor {
-    func intercept(_ request: URLRequest,
-                   next: @Sendable (URLRequest) async throws -> (Data, HTTPURLResponse)) async throws -> (Data,
-                                                                                                          HTTPURLResponse) {
+    func intercept(_ request: URLRequest, next: NextHandler) async throws -> (Data, HTTPURLResponse) {
         do {
             let (data, response) = try await next(request)
             let body = data.isEmpty ? Data("{}".utf8) : data

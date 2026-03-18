@@ -18,18 +18,34 @@ let ascBaseURL: URL = {
 protocol ASCEndpoint: Endpoint {}
 
 extension ASCEndpoint {
-    var baseURL: URL { ascBaseURL }
-    var headers: [String: String]? { nil }
-    var queryItems: [URLQueryItem]? { nil }
-    var body: Data? { nil }
+    var baseURL: URL {
+        ascBaseURL
+    }
+
+    var headers: [String: String]? {
+        nil
+    }
+
+    var queryItems: [URLQueryItem]? {
+        nil
+    }
+
+    var body: Data? {
+        nil
+    }
 }
 
 // MARK: - Endpoint Structs
 
 struct FetchAppsEndpoint: ASCEndpoint {
     typealias Response = ASCListResponse<App>
-    var path: String { "apps" }
-    var method: HTTPMethod { .GET }
+    var path: String {
+        "apps"
+    }
+
+    var method: HTTPMethod {
+        .GET
+    }
 }
 
 struct FetchBuildsEndpoint: ASCEndpoint {
@@ -38,8 +54,14 @@ struct FetchBuildsEndpoint: ASCEndpoint {
     let appId: String
     let limit: Int
 
-    var path: String { "apps/\(appId)/builds" }
-    var method: HTTPMethod { .GET }
+    var path: String {
+        "apps/\(appId)/builds"
+    }
+
+    var method: HTTPMethod {
+        .GET
+    }
+
     var queryItems: [URLQueryItem]? {
         [URLQueryItem(name: "limit", value: "\(limit)"),
          URLQueryItem(name: "sort", value: "-uploadedDate")]
@@ -52,8 +74,14 @@ struct FetchAppStoreVersionsEndpoint: ASCEndpoint {
     let appId: String
     let platform: Platform
 
-    var path: String { "apps/\(appId)/appStoreVersions" }
-    var method: HTTPMethod { .GET }
+    var path: String {
+        "apps/\(appId)/appStoreVersions"
+    }
+
+    var method: HTTPMethod {
+        .GET
+    }
+
     var queryItems: [URLQueryItem]? {
         [URLQueryItem(name: "filter[platform]", value: platform.rawValue),
          URLQueryItem(name: "filter[appStoreState]", value: "PREPARE_FOR_SUBMISSION")]
@@ -65,9 +93,17 @@ struct SubmitForReviewEndpoint: ASCEndpoint {
 
     let versionId: String
 
-    var path: String { "appStoreVersionSubmissions" }
-    var method: HTTPMethod { .POST }
-    var body: Data? { try? JSONEncoder().encode(SubmitBody(versionId: versionId)) }
+    var path: String {
+        "appStoreVersionSubmissions"
+    }
+
+    var method: HTTPMethod {
+        .POST
+    }
+
+    var body: Data? {
+        try? JSONEncoder().encode(SubmitBody(versionId: versionId))
+    }
 }
 
 struct FetchLocalizationsEndpoint: ASCEndpoint {
@@ -75,8 +111,13 @@ struct FetchLocalizationsEndpoint: ASCEndpoint {
 
     let versionId: String
 
-    var path: String { "appStoreVersions/\(versionId)/appStoreVersionLocalizations" }
-    var method: HTTPMethod { .GET }
+    var path: String {
+        "appStoreVersions/\(versionId)/appStoreVersionLocalizations"
+    }
+
+    var method: HTTPMethod {
+        .GET
+    }
 }
 
 struct CreateLocalizationEndpoint: ASCEndpoint {
@@ -85,9 +126,17 @@ struct CreateLocalizationEndpoint: ASCEndpoint {
     let versionId: String
     let metadata: AppMetadata
 
-    var path: String { "appStoreVersions/\(versionId)/appStoreVersionLocalizations" }
-    var method: HTTPMethod { .POST }
-    var body: Data? { try? JSONEncoder().encode(CreateLocalizationBody(versionId: versionId, metadata: metadata)) }
+    var path: String {
+        "appStoreVersions/\(versionId)/appStoreVersionLocalizations"
+    }
+
+    var method: HTTPMethod {
+        .POST
+    }
+
+    var body: Data? {
+        try? JSONEncoder().encode(CreateLocalizationBody(versionId: versionId, metadata: metadata))
+    }
 }
 
 struct PatchLocalizationEndpoint: ASCEndpoint {
@@ -96,9 +145,17 @@ struct PatchLocalizationEndpoint: ASCEndpoint {
     let localizationId: String
     let metadata: AppMetadata
 
-    var path: String { "appStoreVersionLocalizations/\(localizationId)" }
-    var method: HTTPMethod { .PATCH }
-    var body: Data? { try? JSONEncoder().encode(PatchLocalizationBody(localizationId: localizationId, metadata: metadata)) }
+    var path: String {
+        "appStoreVersionLocalizations/\(localizationId)"
+    }
+
+    var method: HTTPMethod {
+        .PATCH
+    }
+
+    var body: Data? {
+        try? JSONEncoder().encode(PatchLocalizationBody(localizationId: localizationId, metadata: metadata))
+    }
 }
 
 // MARK: - JSON:API Request Body Types
@@ -125,66 +182,60 @@ private struct SubmitBody: Encodable {
     let data: BodyData
 
     init(versionId: String) {
-        data = BodyData(relationships: ASCVersionRelationships(
-            appStoreVersion: ASCVersionRelationship(data: ASCVersionRef(id: versionId))
-        ))
+        let ref = ASCVersionRef(id: versionId)
+        let relationship = ASCVersionRelationship(data: ref)
+        let relationships = ASCVersionRelationships(appStoreVersion: relationship)
+        data = BodyData(relationships: relationships)
     }
+}
+
+private struct CreateLocalizationAttributes: Encodable {
+    let locale: String
+    let description: String
+    let keywords: String
+    let whatsNew: String
 }
 
 private struct CreateLocalizationBody: Encodable {
     struct BodyData: Encodable {
         let type = "appStoreVersionLocalizations"
-        let attributes: Attributes
+        let attributes: CreateLocalizationAttributes
         let relationships: ASCVersionRelationships
-
-        struct Attributes: Encodable {
-            let locale: String
-            let description: String
-            let keywords: String
-            let whatsNew: String
-        }
     }
 
     let data: BodyData
 
     init(versionId: String, metadata: AppMetadata) {
-        data = BodyData(
-            attributes: BodyData.Attributes(
-                locale: metadata.locale,
-                description: metadata.description,
-                keywords: metadata.keywords,
-                whatsNew: metadata.releaseNotes
-            ),
-            relationships: ASCVersionRelationships(
-                appStoreVersion: ASCVersionRelationship(data: ASCVersionRef(id: versionId))
-            )
-        )
+        let attrs = CreateLocalizationAttributes(locale: metadata.locale,
+                                                 description: metadata.description,
+                                                 keywords: metadata.keywords,
+                                                 whatsNew: metadata.releaseNotes)
+        let ref = ASCVersionRef(id: versionId)
+        let relationship = ASCVersionRelationship(data: ref)
+        let relationships = ASCVersionRelationships(appStoreVersion: relationship)
+        data = BodyData(attributes: attrs, relationships: relationships)
     }
+}
+
+private struct PatchLocalizationAttributes: Encodable {
+    let description: String
+    let keywords: String
+    let whatsNew: String
 }
 
 private struct PatchLocalizationBody: Encodable {
     struct BodyData: Encodable {
         let type = "appStoreVersionLocalizations"
         let id: String
-        let attributes: Attributes
-
-        struct Attributes: Encodable {
-            let description: String
-            let keywords: String
-            let whatsNew: String
-        }
+        let attributes: PatchLocalizationAttributes
     }
 
     let data: BodyData
 
     init(localizationId: String, metadata: AppMetadata) {
-        data = BodyData(
-            id: localizationId,
-            attributes: BodyData.Attributes(
-                description: metadata.description,
-                keywords: metadata.keywords,
-                whatsNew: metadata.releaseNotes
-            )
-        )
+        data = BodyData(id: localizationId,
+                        attributes: PatchLocalizationAttributes(description: metadata.description,
+                                                                keywords: metadata.keywords,
+                                                                whatsNew: metadata.releaseNotes))
     }
 }

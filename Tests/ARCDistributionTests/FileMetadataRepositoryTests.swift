@@ -3,8 +3,7 @@ import ARCMetadataManager
 import Foundation
 import Testing
 
-@Suite("FileMetadataRepository", .tags(.integration))
-struct FileMetadataRepositoryTests {
+@Suite("FileMetadataRepository", .tags(.integration)) struct FileMetadataRepositoryTests {
     let tmpRoot: URL
     let sut: FileMetadataRepository
 
@@ -16,8 +15,7 @@ struct FileMetadataRepositoryTests {
 
     // MARK: - Round-trip
 
-    @Test("load returns metadata matching what was saved", .tags(.integration))
-    func roundTrip() async throws {
+    @Test("load returns metadata matching what was saved", .tags(.integration)) func roundTrip() async throws {
         let metadata = makeMetadata()
         try await sut.save(metadata)
         let loaded = try await sut.load(appId: metadata.appId, locale: metadata.locale)
@@ -31,8 +29,7 @@ struct FileMetadataRepositoryTests {
         #expect(loaded.releaseNotes == metadata.releaseNotes)
     }
 
-    @Test("save overwrites existing files with new values", .tags(.integration))
-    func saveOverwrites() async throws {
+    @Test("save overwrites existing files with new values", .tags(.integration)) func saveOverwrites() async throws {
         let original = makeMetadata(name: "Original Name")
         try await sut.save(original)
 
