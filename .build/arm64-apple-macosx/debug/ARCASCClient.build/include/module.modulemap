@@ -1,3 +1,0 @@
-module ARCASCClient {
-    header "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCASCClient.build/include/ARCASCClient-Swift.h"
-}

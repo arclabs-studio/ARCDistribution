@@ -1,3 +1,0 @@
-module ARCDistributionPackageTests {
-    header "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/arm64-apple-macosx/debug/ARCDistributionPackageTests.build/include/ARCDistributionPackageTests-Swift.h"
-}

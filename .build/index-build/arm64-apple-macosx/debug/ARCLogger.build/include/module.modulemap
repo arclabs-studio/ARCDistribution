@@ -1,3 +1,0 @@
-module ARCLogger {
-    header "/Users/arclabs/Developer/ARCLabsStudio/Packages/ARCDistribution/.build/index-build/arm64-apple-macosx/debug/ARCLogger.build/include/ARCLogger-Swift.h"
-}
