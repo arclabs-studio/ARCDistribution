@@ -5,8 +5,8 @@ import Foundation
 
 /// Live implementation of `AppStoreConnectClientProtocol`.
 ///
-/// Uses JWT authentication via `ASCHTTPClient` (which wraps `HTTPClientProtocol`)
-/// to call the App Store Connect API v1.
+/// Uses JWT authentication via `BearerTokenInterceptor` and maps ASC error
+/// responses via `ASCErrorInterceptor` before decoding.
 ///
 /// - Note: Inject `ARCDistributionMocks.MockAppStoreConnectClient` in tests.
 public final class AppStoreConnectClient: AppStoreConnectClientProtocol {
@@ -17,7 +17,9 @@ public final class AppStoreConnectClient: AppStoreConnectClientProtocol {
         let jwtGenerator = JWTGenerator(keyId: credentials.keyId,
                                         issuerId: credentials.issuerId,
                                         privateKeyPEM: credentials.privateKeyPEM)
-        httpClient = ASCHTTPClient(jwtGenerator: jwtGenerator)
+        httpClient = HTTPClient(interceptors: [BearerTokenInterceptor { try jwtGenerator.generateToken() },
+                                               ASCErrorInterceptor(),
+                                               LoggingInterceptor()])
         self.logger = logger
     }
 
