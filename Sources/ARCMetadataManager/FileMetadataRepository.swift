@@ -14,24 +14,21 @@ import Foundation
 ///   release_notes.txt
 /// ```
 public final class FileMetadataRepository: MetadataRepositoryProtocol {
-
     private let distributionRoot: URL
     private let logger: any Logger
 
     /// - Parameter distributionRoot: Path to the `Distribution/` folder. Defaults to
     ///   `~/Documents/ARCLabsStudio/Distribution/`.
-    public init(
-        distributionRoot: URL = FileMetadataRepository.defaultDistributionRoot,
-        logger: any Logger = ARCLogger()
-    ) {
+    public init(distributionRoot: URL = FileMetadataRepository.defaultDistributionRoot,
+                logger: any Logger = ARCLogger()) {
         self.distributionRoot = distributionRoot
         self.logger = logger
     }
 
-    public static let defaultDistributionRoot: URL = {
-        let docs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        return docs.appending(path: "ARCLabsStudio/Distribution")
-    }()
+    /// FileManager guarantees at least one URL for .documentDirectory in .userDomainMask
+    public static let defaultDistributionRoot: URL =
+        FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            .appending(path: "ARCLabsStudio/Distribution")
 
     // MARK: - MetadataRepositoryProtocol
 
@@ -39,15 +36,13 @@ public final class FileMetadataRepository: MetadataRepositoryProtocol {
         let folder = metadataFolder(appId: appId, locale: locale)
         logger.debug("Loading metadata from \(folder.path)")
 
-        return AppMetadata(
-            appId: appId,
-            locale: locale,
-            name: try readFile(folder.appending(path: "name.txt")),
-            subtitle: try readFile(folder.appending(path: "subtitle.txt")),
-            keywords: try readFile(folder.appending(path: "keywords.txt")),
-            description: try readFile(folder.appending(path: "description.txt")),
-            releaseNotes: try readFile(folder.appending(path: "release_notes.txt"))
-        )
+        return try AppMetadata(appId: appId,
+                               locale: locale,
+                               name: readFile(folder.appending(path: "name.txt")),
+                               subtitle: readFile(folder.appending(path: "subtitle.txt")),
+                               keywords: readFile(folder.appending(path: "keywords.txt")),
+                               description: readFile(folder.appending(path: "description.txt")),
+                               releaseNotes: readFile(folder.appending(path: "release_notes.txt")))
     }
 
     public func save(_ metadata: AppMetadata) async throws {
@@ -66,10 +61,8 @@ public final class FileMetadataRepository: MetadataRepositoryProtocol {
     public func availableLocales(appId: String) async throws -> [String] {
         let metadataRoot = distributionRoot.appending(path: appId).appending(path: "metadata")
         guard FileManager.default.fileExists(atPath: metadataRoot.path) else { return [] }
-        let contents = try FileManager.default.contentsOfDirectory(
-            at: metadataRoot,
-            includingPropertiesForKeys: [.isDirectoryKey]
-        )
+        let contents = try FileManager.default.contentsOfDirectory(at: metadataRoot,
+                                                                   includingPropertiesForKeys: [.isDirectoryKey])
         return contents
             .filter { (try? $0.resourceValues(forKeys: [.isDirectoryKey]).isDirectory) == true }
             .map(\.lastPathComponent)
@@ -108,7 +101,6 @@ public enum MetadataRepositoryError: Error, Sendable {
 // MARK: - Validation
 
 public struct MetadataValidator: Sendable {
-
     public enum ValidationError: Error, Sendable, CustomStringConvertible {
         case nameTooLong(Int)
         case subtitleTooLong(Int)
@@ -117,13 +109,13 @@ public struct MetadataValidator: Sendable {
 
         public var description: String {
             switch self {
-            case .nameTooLong(let count):
+            case let .nameTooLong(count):
                 "Name is \(count) characters (max 30)"
-            case .subtitleTooLong(let count):
+            case let .subtitleTooLong(count):
                 "Subtitle is \(count) characters (max 30)"
-            case .keywordsTooLong(let count):
+            case let .keywordsTooLong(count):
                 "Keywords are \(count) characters (max 100)"
-            case .descriptionTooLong(let count):
+            case let .descriptionTooLong(count):
                 "Description is \(count) characters (max 4000)"
             }
         }
@@ -145,11 +137,9 @@ public struct MetadataValidator: Sendable {
     }
 
     public static func characterCounts(_ metadata: AppMetadata) -> [String: Int] {
-        [
-            "name": metadata.name.count,
-            "subtitle": metadata.subtitle.count,
-            "keywords": metadata.keywords.count,
-            "description": metadata.description.count
-        ]
+        ["name": metadata.name.count,
+         "subtitle": metadata.subtitle.count,
+         "keywords": metadata.keywords.count,
+         "description": metadata.description.count]
     }
 }

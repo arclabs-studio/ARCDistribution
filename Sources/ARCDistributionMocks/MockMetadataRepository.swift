@@ -4,7 +4,6 @@ import Foundation
 
 /// Test double for `MetadataRepositoryProtocol`.
 public final class MockMetadataRepository: MetadataRepositoryProtocol, @unchecked Sendable {
-
     // MARK: - Stubs
 
     public var stubbedMetadata: [String: AppMetadata] = [:]
@@ -43,6 +42,6 @@ public final class MockMetadataRepository: MetadataRepositoryProtocol, @unchecke
     }
 
     public func availableLocales(appId: String) async throws -> [String] {
-        return stubbedLocales[appId] ?? []
+        stubbedLocales[appId] ?? []
     }
 }

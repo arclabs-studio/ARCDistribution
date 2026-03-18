@@ -4,7 +4,6 @@ import Foundation
 /// Abstraction over the App Store Connect API.
 /// Inject this protocol in consumers — use `ARCDistributionMocks.MockAppStoreConnectClient` in tests.
 public protocol AppStoreConnectClientProtocol: Sendable {
-
     // MARK: Apps
 
     /// Returns all apps accessible with the configured API key.

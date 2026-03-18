@@ -5,6 +5,7 @@ import ARCMetadataManager
 import Foundation
 
 // MARK: - arc-distribution CLI
+
 //
 // Usage:
 //   arc-distribution builds list --app-id <ID>
@@ -14,7 +15,7 @@ import Foundation
 
 let logger: any Logger = ARCLogger()
 
-// Parse top-level command
+/// Parse top-level command
 let args = CommandLine.arguments.dropFirst()
 guard let command = args.first else {
     printUsage()
@@ -37,12 +38,12 @@ func run() async {
         case "help", "--help", "-h":
             printUsage()
         default:
-            print("Unknown command: \(command)")
+            logger.warning("Unknown command: \(command)")
             printUsage()
             exit(1)
         }
     } catch {
-        print("Error: \(error)")
+        logger.error("Error: \(error)")
         exit(1)
     }
 }
@@ -51,7 +52,7 @@ func run() async {
 
 func handleBuilds(args: [String]) async throws {
     guard args.first == "list" else {
-        print("Usage: arc-distribution builds list --app-id <ID>")
+        logger.error("Usage: arc-distribution builds list --app-id <ID>")
         exit(1)
     }
     let appId = try requireArg("--app-id", from: args)
@@ -59,17 +60,16 @@ func handleBuilds(args: [String]) async throws {
     let client = AppStoreConnectClient(credentials: credentials)
     let builds = try await client.fetchBuilds(appId: appId, limit: 10)
 
-    print("\nBuilds for app \(appId):\n")
+    logger.info("Builds for app \(appId):")
     for build in builds {
         let state = build.attributes.processingState.rawValue
-        print("  \(build.attributes.version)  [\(state)]  id=\(build.id)")
+        logger.info("  \(build.attributes.version)  [\(state)]  id=\(build.id)")
     }
-    print("")
 }
 
 func handleMetadata(args: [String]) async throws {
     guard args.first == "sync" else {
-        print("Usage: arc-distribution metadata sync --app-id <ID> [--locale en-US]")
+        logger.error("Usage: arc-distribution metadata sync --app-id <ID> [--locale en-US]")
         exit(1)
     }
     let appId = try requireArg("--app-id", from: args)
@@ -85,7 +85,7 @@ func handleMetadata(args: [String]) async throws {
     let version = try await client.fetchCurrentVersion(appId: appId, platform: .iOS)
     try await client.uploadMetadata(metadata, versionId: version.id)
 
-    print("Metadata synced: \(appId) [\(locale)] → version \(version.attributes.versionString)")
+    logger.info("Metadata synced: \(appId) [\(locale)] → version \(version.attributes.versionString)")
 }
 
 func handleSubmit(args: [String]) async throws {
@@ -95,9 +95,9 @@ func handleSubmit(args: [String]) async throws {
     let client = AppStoreConnectClient(credentials: credentials)
     let version = try await client.fetchCurrentVersion(appId: appId, platform: .iOS)
 
-    print("Submitting \(appId) v\(version.attributes.versionString) for review...")
+    logger.info("Submitting \(appId) v\(version.attributes.versionString) for review...")
     try await client.submitForReview(versionId: version.id)
-    print("Submitted.")
+    logger.info("Submitted.")
 }
 
 func handleValidateMetadata(args: [String]) async throws {
@@ -108,17 +108,17 @@ func handleValidateMetadata(args: [String]) async throws {
     let metadata = try await repo.load(appId: appId, locale: locale)
     let counts = MetadataValidator.characterCounts(metadata)
 
-    print("\nMetadata validation for \(appId) [\(locale)]:\n")
-    print("  name:        \(counts["name"] ?? 0)/30 chars")
-    print("  subtitle:    \(counts["subtitle"] ?? 0)/30 chars")
-    print("  keywords:    \(counts["keywords"] ?? 0)/100 chars")
-    print("  description: \(counts["description"] ?? 0)/4000 chars")
+    logger.info("Metadata validation for \(appId) [\(locale)]:")
+    logger.info("  name:        \(counts["name"] ?? 0)/30 chars")
+    logger.info("  subtitle:    \(counts["subtitle"] ?? 0)/30 chars")
+    logger.info("  keywords:    \(counts["keywords"] ?? 0)/100 chars")
+    logger.info("  description: \(counts["description"] ?? 0)/4000 chars")
 
     do {
         try MetadataValidator.validate(metadata)
-        print("\n  All fields valid.\n")
+        logger.info("  All fields valid.")
     } catch {
-        print("\n  VALIDATION FAILED: \(error)\n")
+        logger.error("  VALIDATION FAILED: \(error)")
         exit(1)
     }
 }
@@ -127,7 +127,7 @@ func handleValidateMetadata(args: [String]) async throws {
 
 func requireArg(_ name: String, from args: [String]) throws -> String {
     guard let value = arg(name, from: args) else {
-        print("Missing required argument: \(name)")
+        logger.error("Missing required argument: \(name)")
         exit(1)
     }
     return value
@@ -139,7 +139,7 @@ func arg(_ name: String, from args: [String]) -> String? {
 }
 
 func printUsage() {
-    print("""
+    logger.info("""
     arc-distribution — ARC Labs Studio App Store distribution tool
 
     Commands:
