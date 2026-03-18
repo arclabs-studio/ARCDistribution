@@ -120,6 +120,25 @@ struct ASCModelsTests {
         }
     }
 
+    // MARK: - ASCResponse init
+
+    @Test("ASCResponse init stores data and defaults links to nil", .tags(.unit)) func ascResponseInitStoresData() {
+        let sut = ASCResponse(data: "hello")
+
+        #expect(sut.data == "hello")
+        #expect(sut.links == nil)
+    }
+
+    // MARK: - ASCListResponse init
+
+    @Test("ASCListResponse init stores data array", .tags(.unit)) func ascListResponseInitStoresData() {
+        let sut = ASCListResponse(data: ["a", "b"])
+
+        #expect(sut.data == ["a", "b"])
+        #expect(sut.links == nil)
+        #expect(sut.meta == nil)
+    }
+
     // MARK: - ASCListResponse
 
     @Test("ASCListResponse decodes data array and pagination metadata", .tags(.unit))
