@@ -10,7 +10,6 @@ import Foundation
 /// let sut = MyFeature(client: mock)
 /// ```
 public final class MockAppStoreConnectClient: AppStoreConnectClientProtocol, @unchecked Sendable {
-
     // MARK: - Stubs
 
     public var stubbedApps: [App] = []
@@ -46,7 +45,7 @@ public final class MockAppStoreConnectClient: AppStoreConnectClientProtocol, @un
         return stubbedApps
     }
 
-    public func fetchBuilds(appId: String, limit: Int) async throws -> [Build] {
+    public func fetchBuilds(appId: String, limit _: Int) async throws -> [Build] {
         fetchBuildsCallCount += 1
         lastFetchBuildsAppId = appId
         if let error = fetchBuildsError { throw error }
@@ -67,13 +66,13 @@ public final class MockAppStoreConnectClient: AppStoreConnectClientProtocol, @un
         if let error = submitForReviewError { throw error }
     }
 
-    public func uploadMetadata(_ metadata: AppMetadata, versionId: String) async throws {
+    public func uploadMetadata(_ metadata: AppMetadata, versionId _: String) async throws {
         uploadMetadataCallCount += 1
         lastUploadedMetadata = metadata
         if let error = uploadMetadataError { throw error }
     }
 
-    public func fetchLocalizations(versionId: String) async throws -> [AppStoreVersionLocalization] {
-        return stubbedLocalizations
+    public func fetchLocalizations(versionId _: String) async throws -> [AppStoreVersionLocalization] {
+        stubbedLocalizations
     }
 }
