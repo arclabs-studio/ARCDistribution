@@ -77,7 +77,8 @@ let package = Package(name: "ARCDistribution",
                                       dependencies: ["ARCASCClient",
                                                      "ARCASCModels",
                                                      "ARCMetadataManager",
-                                                     "ARCDistributionMocks"],
+                                                     "ARCDistributionMocks",
+                                                     .product(name: "ARCNetworking", package: "ARCNetworking")],
                                       path: "Tests/ARCDistributionTests")],
 
                       // MARK: - Swift Language
