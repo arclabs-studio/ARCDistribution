@@ -63,6 +63,7 @@ fastlane/test_output
 
 
 # ARCKnowledge skills (symlinks)
+.claude/skills/git-branch-sync
 .claude/skills/arc-audit
 .claude/skills/arc-data-layer
 .claude/skills/arc-final-review
