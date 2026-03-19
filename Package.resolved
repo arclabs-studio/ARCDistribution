@@ -1,5 +1,5 @@
 {
-  "originHash" : "b32e0057a16ad332a3007e77aa2655ad53fc9520733cb9e73bf07a83fa8e08f5",
+  "originHash" : "c8aa67839e6d384ffc2d22267cca7c0dc2cb8c2f95a0c5fcda4cdc3f13d33929",
   "pins" : [
     {
       "identity" : "arclogger",
@@ -16,7 +16,7 @@
       "location" : "https://github.com/arclabs-studio/ARCNetworking.git",
       "state" : {
         "branch" : "develop",
-        "revision" : "3ad7df9acfc112a012550a8b9d80ec76c6c15163"
+        "revision" : "e5ab54f49c96fd6f0ef79f74223bc552789c6993"
       }
     },
     {
