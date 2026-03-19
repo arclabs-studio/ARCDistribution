@@ -165,7 +165,7 @@ public struct AppStoreVersionLocalization: Decodable, Sendable, Identifiable {
 
 /// Flat representation of all metadata for one app + locale combination.
 /// Used by ARCMetadataManager when reading from and writing to the iCloud folder.
-public struct AppMetadata: Sendable {
+public struct AppMetadata: Codable, Sendable {
     public let appId: String
     public let locale: String
     public let name: String
@@ -174,15 +174,13 @@ public struct AppMetadata: Sendable {
     public let description: String
     public let releaseNotes: String
 
-    public init(
-        appId: String,
-        locale: String,
-        name: String,
-        subtitle: String,
-        keywords: String,
-        description: String,
-        releaseNotes: String
-    ) {
+    public init(appId: String,
+                locale: String,
+                name: String,
+                subtitle: String,
+                keywords: String,
+                description: String,
+                releaseNotes: String) {
         self.appId = appId
         self.locale = locale
         self.name = name
@@ -260,6 +258,14 @@ public enum DisplayType: String, Decodable, Sendable {
     case appIpadPro129 = "APP_IPAD_PRO_129"
     case appIpad105 = "APP_IPAD_105"
     case appIpad97 = "APP_IPAD_97"
+}
+
+// MARK: - Empty Response
+
+/// Sentinel type for ASC endpoints that return HTTP 201/204 with an empty body.
+/// The custom initializer ignores all content, so it decodes successfully from `{}`.
+public struct EmptyResponse: Decodable, Sendable {
+    public init(from _: any Decoder) throws {}
 }
 
 // MARK: - ASC Error

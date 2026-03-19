@@ -5,7 +5,6 @@ import Foundation
 ///
 /// See: https://developer.apple.com/documentation/appstoreconnectapi/generating_tokens_for_api_requests
 public struct JWTGenerator: Sendable {
-
     private let keyId: String
     private let issuerId: String
     private let privateKeyPEM: String
@@ -20,12 +19,10 @@ public struct JWTGenerator: Sendable {
     public func generateToken() throws -> String {
         let header = Header(alg: "ES256", kid: keyId, typ: "JWT")
         let now = Date()
-        let payload = Payload(
-            iss: issuerId,
-            iat: Int(now.timeIntervalSince1970),
-            exp: Int(now.addingTimeInterval(20 * 60).timeIntervalSince1970),
-            aud: "appstoreconnect-v1"
-        )
+        let payload = Payload(iss: issuerId,
+                              iat: Int(now.timeIntervalSince1970),
+                              exp: Int(now.addingTimeInterval(20 * 60).timeIntervalSince1970),
+                              aud: "appstoreconnect-v1")
 
         let encodedHeader = try base64URLEncode(header)
         let encodedPayload = try base64URLEncode(payload)
@@ -64,7 +61,7 @@ public struct JWTGenerator: Sendable {
         return base64URLEncode(signature.rawRepresentation)
     }
 
-    private func base64URLEncode<T: Encodable>(_ value: T) throws -> String {
+    private func base64URLEncode(_ value: some Encodable) throws -> String {
         let data = try JSONEncoder().encode(value)
         return base64URLEncode(data)
     }
@@ -97,5 +94,4 @@ public struct JWTGenerator: Sendable {
 public enum JWTError: Error, Sendable {
     case invalidPrivateKey
     case encodingFailed
-    case signingFailed
 }

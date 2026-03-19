@@ -6,7 +6,6 @@ import Foundation
 /// Default path: `~/Documents/ARCLabsStudio/Distribution/<AppName>/metadata/<locale>/`
 /// Inject `ARCDistributionMocks.MockMetadataRepository` in tests.
 public protocol MetadataRepositoryProtocol: Sendable {
-
     /// Loads metadata for a given app and locale from the iCloud folder.
     func load(appId: String, locale: String) async throws -> AppMetadata
 
