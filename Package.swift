@@ -22,8 +22,7 @@ let package = Package(name: "ARCDistribution",
 
                       dependencies: [.package(url: "https://github.com/arclabs-studio/ARCNetworking.git",
                                               branch: "develop"),
-                                     .package(url: "https://github.com/arclabs-studio/ARCLogger.git", from: "1.0.0"),
-                                     .package(url: "https://github.com/arclabs-studio/ARCStorage.git", from: "1.0.0")],
+                                     .package(url: "https://github.com/arclabs-studio/ARCLogger.git", from: "1.0.0")],
 
                       // MARK: - Targets
 
@@ -31,8 +30,7 @@ let package = Package(name: "ARCDistribution",
 
                           .target(name: "ARCASCModels",
                                   dependencies: [],
-                                  path: "Sources/ARCASCModels",
-                                  swiftSettings: [.enableUpcomingFeature("StrictConcurrency")]),
+                                  path: "Sources/ARCASCModels"),
 
                           // MARK: ARCASCClient — JWT auth + HTTP client for App Store Connect API
 
@@ -40,17 +38,14 @@ let package = Package(name: "ARCDistribution",
                                   dependencies: ["ARCASCModels",
                                                  .product(name: "ARCNetworking", package: "ARCNetworking"),
                                                  .product(name: "ARCLogger", package: "ARCLogger")],
-                                  path: "Sources/ARCASCClient",
-                                  swiftSettings: [.enableUpcomingFeature("StrictConcurrency")]),
+                                  path: "Sources/ARCASCClient"),
 
                           // MARK: ARCMetadataManager — Read/write localized metadata from iCloud folder
 
                           .target(name: "ARCMetadataManager",
                                   dependencies: ["ARCASCModels",
-                                                 .product(name: "ARCLogger", package: "ARCLogger"),
-                                                 .product(name: "ARCStorage", package: "ARCStorage")],
-                                  path: "Sources/ARCMetadataManager",
-                                  swiftSettings: [.enableUpcomingFeature("StrictConcurrency")]),
+                                                 .product(name: "ARCLogger", package: "ARCLogger")],
+                                  path: "Sources/ARCMetadataManager"),
 
                           // MARK: ARCDistributionMocks — Test doubles for all protocols
 
@@ -58,8 +53,7 @@ let package = Package(name: "ARCDistribution",
                                   dependencies: ["ARCASCClient",
                                                  "ARCASCModels",
                                                  "ARCMetadataManager"],
-                                  path: "Sources/ARCDistributionMocks",
-                                  swiftSettings: [.enableUpcomingFeature("StrictConcurrency")]),
+                                  path: "Sources/ARCDistributionMocks"),
 
                           // MARK: ARCDistributionCLI — CLI executable for ci_scripts and terminal
 
@@ -68,8 +62,7 @@ let package = Package(name: "ARCDistribution",
                                                            "ARCASCModels",
                                                            "ARCMetadataManager",
                                                            .product(name: "ARCLogger", package: "ARCLogger")],
-                                            path: "Sources/ARCDistributionCLI",
-                                            swiftSettings: [.enableUpcomingFeature("StrictConcurrency")]),
+                                            path: "Sources/ARCDistributionCLI"),
 
                           // MARK: Tests
 

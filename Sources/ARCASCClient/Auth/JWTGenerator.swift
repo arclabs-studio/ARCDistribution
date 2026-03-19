@@ -94,5 +94,4 @@ public struct JWTGenerator: Sendable {
 public enum JWTError: Error, Sendable {
     case invalidPrivateKey
     case encodingFailed
-    case signingFailed
 }

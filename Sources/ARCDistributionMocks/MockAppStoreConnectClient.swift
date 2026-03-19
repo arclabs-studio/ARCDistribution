@@ -30,6 +30,8 @@ public final class MockAppStoreConnectClient: AppStoreConnectClientProtocol, @un
     public private(set) var fetchAppsCallCount = 0
     public private(set) var fetchBuildsCallCount = 0
     public private(set) var lastFetchBuildsAppId: String?
+    public private(set) var fetchCurrentVersionCallCount = 0
+    public private(set) var lastFetchCurrentVersionAppId: String?
     public private(set) var submitForReviewCallCount = 0
     public private(set) var lastSubmittedVersionId: String?
     public private(set) var uploadMetadataCallCount = 0
@@ -53,6 +55,8 @@ public final class MockAppStoreConnectClient: AppStoreConnectClientProtocol, @un
     }
 
     public func fetchCurrentVersion(appId: String, platform: Platform) async throws -> AppStoreVersion {
+        fetchCurrentVersionCallCount += 1
+        lastFetchCurrentVersionAppId = appId
         if let error = fetchVersionError { throw error }
         guard let version = stubbedVersion else {
             throw ASCClientError.noVersionFound(appId: appId, platform: platform.rawValue)

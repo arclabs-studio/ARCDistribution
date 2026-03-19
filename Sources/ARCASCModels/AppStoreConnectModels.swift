@@ -165,7 +165,7 @@ public struct AppStoreVersionLocalization: Decodable, Sendable, Identifiable {
 
 /// Flat representation of all metadata for one app + locale combination.
 /// Used by ARCMetadataManager when reading from and writing to the iCloud folder.
-public struct AppMetadata: Sendable {
+public struct AppMetadata: Codable, Sendable {
     public let appId: String
     public let locale: String
     public let name: String
