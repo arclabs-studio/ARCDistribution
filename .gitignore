@@ -78,6 +78,41 @@ fastlane/test_output
 .claude/skills/arc-xcode-cloud
 
 
+# Third-party skills (app-store-connect-cli-skills)
+# Primary install dir + universal copy
+.agents/
+skills/
+# Claude Code symlinks
+.claude/skills/asc-*
+# Per-agent config dirs created by `npx skills add`
+.adal/
+.augment/
+.codebuddy/
+.commandcode/
+.continue/
+.cortex/
+.crush/
+.factory/
+.goose/
+.iflow/
+.junie/
+.kilocode/
+.kiro/
+.kode/
+.mcpjam/
+.mux/
+.neovate/
+.openhands/
+.pi/
+.pochi/
+.qoder/
+.qwen/
+.roo/
+.trae/
+.vibe/
+.windsurf/
+.zencoder/
+
 # ARCKnowledge agents (symlinks)
 .claude/agents/arc-aso.md
 .claude/agents/arc-dependency-auditor.md
