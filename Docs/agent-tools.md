@@ -59,6 +59,19 @@ Installed at `~/.agents/skills/` (symlinked from iCloud — available on all stu
 
 ---
 
+## Xcode Build Optimization
+
+Six-skill suite by [@AvdLee](https://github.com/AvdLee/Xcode-Build-Optimization-Agent-Skill) for benchmarking and optimizing build times. For ARCDistribution specifically:
+
+| Skill | When to use |
+|---|---|
+| `spm-build-analysis` | Analyze SPM overhead and package dependency inefficiencies in ARCDistribution itself |
+| `xcode-build-orchestrator` | Full build audit when ARCDistribution is embedded in an Xcode app project |
+
+> Full suite documentation: [`ARCKnowledge/Tools/agent-tools.md`](../ARCDevTools/ARCKnowledge/Tools/agent-tools.md)
+
+---
+
 ## MCPs
 
 Configured in `~/.claude/mcp_settings.json`.
