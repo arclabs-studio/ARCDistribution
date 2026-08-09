@@ -12,7 +12,9 @@ private final class StubHTTPClient: HTTPClientProtocol, @unchecked Sendable {
     private var callIndex = 0
 
     func execute<T: Endpoint>(_: T) async throws -> T.Response {
-        if let error = stubbedError { throw error }
+        if let error = stubbedError {
+            throw error
+        }
         let data = responses[callIndex % responses.count]
         callIndex += 1
         return try JSONDecoder().decode(T.Response.self, from: data)

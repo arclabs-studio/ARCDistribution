@@ -26,7 +26,9 @@ public final class MockMetadataRepository: MetadataRepositoryProtocol, @unchecke
 
     public func load(appId: String, locale: String) async throws -> AppMetadata {
         loadCallCount += 1
-        if let error = loadError { throw error }
+        if let error = loadError {
+            throw error
+        }
         let key = "\(appId)-\(locale)"
         guard let metadata = stubbedMetadata[key] else {
             throw MetadataRepositoryError.fileNotFound(key)
@@ -37,7 +39,9 @@ public final class MockMetadataRepository: MetadataRepositoryProtocol, @unchecke
     public func save(_ metadata: AppMetadata) async throws {
         saveCallCount += 1
         lastSavedMetadata = metadata
-        if let error = saveError { throw error }
+        if let error = saveError {
+            throw error
+        }
         stubbedMetadata["\(metadata.appId)-\(metadata.locale)"] = metadata
     }
 

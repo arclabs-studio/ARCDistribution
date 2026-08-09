@@ -43,21 +43,27 @@ public final class MockAppStoreConnectClient: AppStoreConnectClientProtocol, @un
 
     public func fetchApps() async throws -> [App] {
         fetchAppsCallCount += 1
-        if let error = fetchAppsError { throw error }
+        if let error = fetchAppsError {
+            throw error
+        }
         return stubbedApps
     }
 
     public func fetchBuilds(appId: String, limit _: Int) async throws -> [Build] {
         fetchBuildsCallCount += 1
         lastFetchBuildsAppId = appId
-        if let error = fetchBuildsError { throw error }
+        if let error = fetchBuildsError {
+            throw error
+        }
         return stubbedBuilds
     }
 
     public func fetchCurrentVersion(appId: String, platform: Platform) async throws -> AppStoreVersion {
         fetchCurrentVersionCallCount += 1
         lastFetchCurrentVersionAppId = appId
-        if let error = fetchVersionError { throw error }
+        if let error = fetchVersionError {
+            throw error
+        }
         guard let version = stubbedVersion else {
             throw ASCClientError.noVersionFound(appId: appId, platform: platform.rawValue)
         }
@@ -67,13 +73,17 @@ public final class MockAppStoreConnectClient: AppStoreConnectClientProtocol, @un
     public func submitForReview(versionId: String) async throws {
         submitForReviewCallCount += 1
         lastSubmittedVersionId = versionId
-        if let error = submitForReviewError { throw error }
+        if let error = submitForReviewError {
+            throw error
+        }
     }
 
     public func uploadMetadata(_ metadata: AppMetadata, versionId _: String) async throws {
         uploadMetadataCallCount += 1
         lastUploadedMetadata = metadata
-        if let error = uploadMetadataError { throw error }
+        if let error = uploadMetadataError {
+            throw error
+        }
     }
 
     public func fetchLocalizations(versionId _: String) async throws -> [AppStoreVersionLocalization] {

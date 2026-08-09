@@ -76,6 +76,9 @@ fastlane/test_output
 .claude/skills/arc-workflow
 .claude/skills/arc-worktrees-workflow
 .claude/skills/arc-xcode-cloud
+.claude/skills/arc-karpathy-guidelines
+.claude/skills/arc-localization
+.claude/skills/arc-notes-system
 
 
 # Third-party skills (app-store-connect-cli-skills)
@@ -126,3 +129,7 @@ skills/
 .claude/agents/arc-swiftdata-migration.md
 .claude/agents/arc-testflight.md
 .claude/agents/arc-xcode-explorer.md
+
+
+# ARCDevTools pinned tool binaries
+.arc-tools/
