@@ -30,5 +30,33 @@ jobs:
       - name: Test
         run: swift test
 
-      - name: Lint
+      # ----------------------------------------------------------------------
+      # TOOL VERSION PINNING
+      # ----------------------------------------------------------------------
+      # SwiftLint is installed at the EXACT version pinned in
+      # `.arc-tool-versions` into `.arc-tools/bin`. Never `brew install
+      # swiftlint` here — brew has no versioned formula, so it drifts to
+      # whatever is latest and silently breaks PRs that were green locally.
+      #
+      # `make lint` delegates to ARCDevTools/scripts/lint.sh, which resolves
+      # the same pinned binary the git hooks use, so local == CI.
+      # ----------------------------------------------------------------------
+      - name: Read pinned tool versions
+        id: versions
+        # Falls back to the submodule copy when .arc-tool-versions is absent.
+        run: |
+          PINS=.arc-tool-versions
+          [ -f "$PINS" ] || PINS=ARCDevTools/configs/tool-versions
+          grep -E '^[A-Z_]+=' "$PINS" >> "$GITHUB_OUTPUT"
+
+      - name: Cache pinned tools
+        uses: actions/cache@v4
+        with:
+          path: .arc-tools
+          key: arc-tools-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('.arc-tool-versions', 'ARCDevTools/configs/tool-versions') }}
+
+      - name: Install pinned SwiftLint
+        run: ./ARCDevTools/scripts/install-tools.sh swiftlint
+
+      - name: Lint (SwiftLint ${{ steps.versions.outputs.SWIFTLINT_VERSION }})
         run: make lint
