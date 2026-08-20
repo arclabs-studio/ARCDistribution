@@ -64,6 +64,23 @@ arc-distribution validate-metadata --app-id <AppName> --locale es-ES
 - [ ] Content rights declaration complete
 - [ ] Export compliance answered
 
+**Privacy & Entitlements (Critical)**
+- [ ] `PrivacyInfo.xcprivacy` present in app target (required since Spring 2024)
+- [ ] All declared privacy nutrition labels match actual data collection
+- [ ] No unused entitlements in `.entitlements` file — cross-reference with actual API usage
+- [ ] No competitor brand names in metadata files (Android, Google Play, Samsung, Pixel, etc.)
+- [ ] Subscription apps: Terms of Service URL and Privacy Policy URL set in App Store Connect
+
+Validate privacy manifest presence:
+```bash
+find . -name "PrivacyInfo.xcprivacy" -not -path "*/.*"
+```
+
+Check for competitor terms in metadata:
+```bash
+grep -ri -E "android|google play|samsung|pixel|huawei" ~/Documents/ARCLabsStudio/Distribution/*/metadata/
+```
+
 **Screenshots (High)**
 - [ ] iPhone 6.9" screenshots uploaded (min 3, ideally 10)
 - [ ] iPhone 6.5" screenshots uploaded

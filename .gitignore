@@ -76,7 +76,45 @@ fastlane/test_output
 .claude/skills/arc-workflow
 .claude/skills/arc-worktrees-workflow
 .claude/skills/arc-xcode-cloud
+.claude/skills/arc-karpathy-guidelines
+.claude/skills/arc-localization
+.claude/skills/arc-notes-system
 
+
+# Third-party skills (app-store-connect-cli-skills)
+# Primary install dir + universal copy
+.agents/
+skills/
+# Claude Code symlinks
+.claude/skills/asc-*
+# Per-agent config dirs created by `npx skills add`
+.adal/
+.augment/
+.codebuddy/
+.commandcode/
+.continue/
+.cortex/
+.crush/
+.factory/
+.goose/
+.iflow/
+.junie/
+.kilocode/
+.kiro/
+.kode/
+.mcpjam/
+.mux/
+.neovate/
+.openhands/
+.pi/
+.pochi/
+.qoder/
+.qwen/
+.roo/
+.trae/
+.vibe/
+.windsurf/
+.zencoder/
 
 # ARCKnowledge agents (symlinks)
 .claude/agents/arc-aso.md
@@ -91,3 +129,7 @@ fastlane/test_output
 .claude/agents/arc-swiftdata-migration.md
 .claude/agents/arc-testflight.md
 .claude/agents/arc-xcode-explorer.md
+
+
+# ARCDevTools pinned tool binaries
+.arc-tools/

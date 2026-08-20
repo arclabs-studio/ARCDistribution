@@ -21,7 +21,7 @@ let package = Package(name: "ARCDistribution",
                       // MARK: - Dependencies
 
                       dependencies: [.package(url: "https://github.com/arclabs-studio/ARCNetworking.git",
-                                              branch: "develop"),
+                                              from: "1.0.0"),
                                      .package(url: "https://github.com/arclabs-studio/ARCLogger.git", from: "1.0.0")],
 
                       // MARK: - Targets
